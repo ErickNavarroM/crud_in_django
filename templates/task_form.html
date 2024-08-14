@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock title %}
+
+{% block body %}
+
+{% if task %}
+<form action="{% url "update_task" id=task.id %}" method="post">
+{% else %}
+<form action="{% url "create_task" %}" method="post">
+{% endif %}
+    {% csrf_token %}
+    <label for="title">title</label>
+    <input value="{{ task.title }}" name="title" id="title" type="text"><br>
+    <label for="description">description</label>
+    <input value="{{ task.description }}" name="description" id="description" type="text"><br>
+    <label for="is_completed">is_completed</label>
+    {% if task.is_completed %}
+    <input value="on" name="is_completed" id="is_completed" type="checkbox" checked><br>
+    {% else %}
+    <input value="on" name="is_completed" id="is_completed" type="checkbox"><br>
+    {% endif %}
+    {% comment %} <p>{{task.is_completed}}</p> {% endcomment %}
+    <button>Save</button>
+</form>
+{% endblock body %}
