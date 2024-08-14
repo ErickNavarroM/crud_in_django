@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}CRUD{% endblock title %}
+
+{% block body %}
+<table border="1", cellpadding="5", cellspacing="0">
+    <thead>
+        <tr>
+            <td>Title</td>
+            <td>Description</td>
+            <td>Is it completed?</td>
+            <td>Created at</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+        <tr>
+            <td>{{task.title}}</td>
+            <td>{{task.description}}</td>
+            <td>{{task.is_completed}}</td>
+            <td>{{task.created_at}}</td>
+            <td><a href="{% url "update_task" id=task.id %}"><button>Edit</button></a></td>
+            <td><a href="{% url "delete_task" id=task.id %}"><button>Delete</button></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p><a href="{% url 'create_task' %}"><button>Add task</button></a></p>
+{% endblock body %}
