@@ -11,9 +11,9 @@
 {% endif %}
     {% csrf_token %}
     <label for="title">title</label>
-    <input value="{{ task.title }}" name="title" id="title" type="text"><br>
+    <input value="{{ task.title }}" name="title" id="title" type="text" max_length="255"><br>
     <label for="description">description</label>
-    <input value="{{ task.description }}" name="description" id="description" type="text"><br>
+    <input value="{{ task.description }}" name="description" id="description" type="text" max_length="255"><br>
     <label for="is_completed">is_completed</label>
     {% if task.is_completed %}
     <input value="on" name="is_completed" id="is_completed" type="checkbox" checked><br>
